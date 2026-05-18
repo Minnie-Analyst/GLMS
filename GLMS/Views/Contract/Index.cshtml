@@ -1,0 +1,256 @@
+﻿@model IEnumerable<GLMS.Models.Contract>
+
+@{
+    ViewData["Title"] = "Contracts";
+}
+
+<div class="container mt-4">
+
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger">
+            @TempData["Error"]
+        </div>
+    }
+
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success">
+            @TempData["Success"]
+        </div>
+    }
+
+    <!-- HEADER -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+
+        <div>
+            <h2 class="mb-0">Contracts</h2>
+            <small class="text-muted">
+                Manage client agreements
+            </small>
+        </div>
+
+        <a asp-action="Create"
+           class="btn btn-success">
+
+            + New Contract
+
+        </a>
+
+    </div>
+
+    <!-- FILTER CARD -->
+    <div class="card shadow-sm border-0 p-3 mb-4">
+
+        <form method="get"
+              class="row g-3">
+
+            <div class="col-md-3">
+
+                <label class="form-label">
+                    Start Date
+                </label>
+
+                <input type="date"
+                       name="startDate"
+                       class="form-control" />
+
+            </div>
+
+            <div class="col-md-3">
+
+                <label class="form-label">
+                    End Date
+                </label>
+
+                <input type="date"
+                       name="endDate"
+                       class="form-control" />
+
+            </div>
+
+            <div class="col-md-3">
+
+                <label class="form-label">
+                    Status
+                </label>
+
+                <select name="status"
+                        class="form-select">
+
+                    <option value="">
+                        All
+                    </option>
+
+                    <option>
+                        Draft
+                    </option>
+
+                    <option>
+                        Active
+                    </option>
+
+                    <option>
+                        Expired
+                    </option>
+
+                    <option>
+                        On Hold
+                    </option>
+
+                </select>
+
+            </div>
+
+            <div class="col-md-3 d-flex align-items-end">
+
+                <button class="btn btn-primary w-100">
+                    Filter
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+    <!-- TABLE CARD -->
+    <div class="card shadow-sm border-0 p-3">
+
+        <div class="table-responsive">
+
+            <table class="table align-middle">
+
+                <thead>
+
+                    <tr>
+
+                        <th>Client</th>
+                        <th>Start</th>
+                        <th>End</th>
+                        <th>Status</th>
+                        <th>File</th>
+                        <th>Actions</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+
+                            <!-- CLIENT -->
+                            <td>
+
+                                <div class="fw-semibold">
+                                    @item.Client?.Name
+                                </div>
+
+                                <small class="text-muted">
+                                    ID: @item.Id
+                                </small>
+
+                            </td>
+
+                            <!-- START -->
+                            <td>
+                                @item.StartDate.ToString("dd MMM yyyy")
+                            </td>
+
+                            <!-- END -->
+                            <td>
+                                @item.EndDate.ToString("dd MMM yyyy")
+                            </td>
+
+                            <!-- STATUS -->
+                            <td>
+
+                                @if (item.Status == "Active")
+                                {
+                                    <span class="badge bg-success-subtle text-success">
+                                        Active
+                                    </span>
+                                }
+                                else if (item.Status == "Expired")
+                                {
+                                    <span class="badge bg-danger-subtle text-danger">
+                                        Expired
+                                    </span>
+                                }
+                                else if (item.Status == "On Hold")
+                                {
+                                    <span class="badge bg-warning-subtle text-warning">
+                                        On Hold
+                                    </span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-secondary-subtle text-dark">
+                                        Draft
+                                    </span>
+                                }
+
+                            </td>
+
+                            <!-- FILE -->
+                            <td>
+
+                                @if (!string.IsNullOrEmpty(item.FilePath))
+                                {
+                                    <a asp-action="Download"
+                                       asp-route-id="@item.Id"
+                                       class="btn btn-sm btn-outline-success">
+
+                                        Download
+
+                                    </a>
+                                }
+                                else
+                                {
+                                    <span class="text-muted">
+                                        No file
+                                    </span>
+                                }
+
+                            </td>
+
+                            <!-- ACTIONS -->
+                            <td>
+
+                                <div class="d-flex gap-2">
+
+                                    <a asp-action="Edit"
+                                       asp-route-id="@item.Id"
+                                       class="btn btn-sm btn-outline-primary">
+
+                                        Edit
+
+                                    </a>
+
+                                    <a asp-action="Delete"
+                                       asp-route-id="@item.Id"
+                                       class="btn btn-sm btn-outline-danger">
+
+                                        Delete
+
+                                    </a>
+
+                                </div>
+
+                            </td>
+
+                        </tr>
+                    }
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>

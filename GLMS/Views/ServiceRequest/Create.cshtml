@@ -1,0 +1,96 @@
+﻿@model GLMS.Models.ServiceRequest
+
+@{
+    ViewData["Title"] = "Create Service Request";
+}
+
+<div class="container mt-4">
+
+    <h2 class="mb-4">Create Service Request</h2>
+
+    <!-- LIVE RATE -->
+    <div class="alert alert-info">
+
+        Current USD to ZAR Rate:
+        <strong>
+            @ViewBag.ExchangeRate
+        </strong>
+
+    </div>
+
+    <form asp-action="Create" method="post">
+
+        <div asp-validation-summary="All"
+             class="alert alert-danger">
+        </div>
+
+        <!-- CONTRACT -->
+        <div class="mb-3">
+
+            <label class="form-label">
+                Contract
+            </label>
+
+            <select asp-for="ContractId"
+                    class="form-select"
+                    asp-items="ViewBag.ContractId">
+
+                <option value="">
+                    -- Select Contract --
+                </option>
+
+            </select>
+
+        </div>
+
+        <!-- DESCRIPTION -->
+        <div class="mb-3">
+
+            <label class="form-label">
+                Description
+            </label>
+
+            <textarea asp-for="Description"
+                      class="form-control">
+            </textarea>
+
+        </div>
+
+        <!-- USD -->
+        <div class="mb-3">
+
+            <label class="form-label">
+                Cost USD
+            </label>
+
+            <input asp-for="CostUSD"
+                   class="form-control" />
+
+        </div>
+
+        <!-- ZAR -->
+        <div class="mb-3">
+
+            <label class="form-label">
+                Cost ZAR (Auto Calculated)
+            </label>
+            <input class="form-control"
+                   placeholder="Automatically calculated after saving"
+                   readonly />
+
+        </div>
+
+        <button type="submit"
+                class="btn btn-primary">
+            Save Request
+        </button>
+
+    </form>
+
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -1,0 +1,121 @@
+﻿@model GLMS.Models.ServiceRequest
+
+@{
+    ViewData["Title"] = "Edit Service Request";
+}
+
+<div class="container mt-4">
+
+    <div class="card shadow-sm border-0 p-4">
+
+        <h2 class="fw-bold text-success mb-4">
+            Edit Service Request
+        </h2>
+
+        <form asp-action="Edit" method="post">
+
+            <input type="hidden" asp-for="Id" />
+
+            <div asp-validation-summary="All"
+                 class="text-danger mb-3">
+            </div>
+
+            <!-- CONTRACT -->
+            <div class="mb-3">
+
+                <label class="form-label">
+                    Contract
+                </label>
+
+                <select asp-for="ContractId"
+                        asp-items="ViewBag.ContractId"
+                        class="form-select">
+                </select>
+
+            </div>
+
+            <!-- DESCRIPTION -->
+            <div class="mb-3">
+
+                <label asp-for="Description"
+                       class="form-label">
+                    Description
+                </label>
+
+                <textarea asp-for="Description"
+                          class="form-control"
+                          rows="4">
+                </textarea>
+
+            </div>
+
+            <!-- COST USD -->
+            <div class="mb-3">
+
+                <label asp-for="CostUSD"
+                       class="form-label">
+                    Cost (USD)
+                </label>
+
+                <input asp-for="CostUSD"
+                       class="form-control" />
+
+            </div>
+
+            <!-- STATUS -->
+            <div class="mb-3">
+
+                <label asp-for="Status"
+                       class="form-label">
+                    Status
+                </label>
+
+                <select asp-for="Status"
+                        class="form-select">
+
+                    <option value="Pending">
+                        Pending
+                    </option>
+
+                    <option value="In Progress">
+                        In Progress
+                    </option>
+
+                    <option value="Completed">
+                        Completed
+                    </option>
+
+                </select>
+
+            </div>
+
+            <!-- BUTTONS -->
+            <div class="d-flex gap-2">
+
+                <button type="submit"
+                        class="btn btn-success">
+
+                    Save Changes
+
+                </button>
+
+                <a asp-action="Index"
+                   class="btn btn-secondary">
+
+                    Back
+
+                </a>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

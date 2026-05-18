@@ -1,0 +1,161 @@
+﻿@model IEnumerable<GLMS.Models.ServiceRequest>
+
+@{
+    ViewData["Title"] = "Service Requests";
+}
+
+<div class="container mt-4">
+
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success">
+            @TempData["Success"]
+        </div>
+    }
+
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger">
+            @TempData["Error"]
+        </div>
+    }
+
+    <!-- HEADER -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+
+        <div>
+            <h2 class="mb-0">Service Requests</h2>
+            <small class="text-muted">
+                Contract-based service tracking
+            </small>
+        </div>
+
+        <a asp-action="Create"
+           class="btn btn-success">
+
+            + New Request
+
+        </a>
+
+    </div>
+
+    <!-- CARDS -->
+    <div class="row">
+
+        @foreach (var item in Model)
+        {
+            <div class="col-md-6 col-lg-4 mb-4">
+
+                <div class="card shadow-sm border-0 p-3 h-100">
+
+                    <!-- TOP -->
+                    <div class="d-flex justify-content-between align-items-start mb-3">
+
+                        <div>
+
+                            <h6 class="mb-0">
+
+                                Contract #@item.ContractId
+
+                            </h6>
+
+                            <small class="text-muted">
+
+                                @item.Contract?.Client?.Name
+
+                            </small>
+
+                        </div>
+
+                        <!-- STATUS -->
+                        @if (item.Status == "Pending")
+                        {
+                            <span class="badge bg-warning-subtle text-warning">
+                                Pending
+                            </span>
+                        }
+                        else if (item.Status == "In Progress")
+                        {
+                            <span class="badge bg-primary-subtle text-primary">
+                                In Progress
+                            </span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-success-subtle text-success">
+                                Completed
+                            </span>
+                        }
+
+                    </div>
+
+                    <!-- DESCRIPTION -->
+                    <p class="text-muted mb-3">
+
+                        @item.Description
+
+                    </p>
+
+                    <!-- COSTS -->
+                    <div class="mb-2">
+
+                        <span class="fw-semibold">
+                            USD:
+                        </span>
+
+                        $@item.CostUSD
+
+                    </div>
+
+                    <div class="mb-3">
+
+                        <span class="fw-semibold">
+                            ZAR:
+                        </span>
+
+                        R @item.CostZAR
+
+                    </div>
+
+                    <!-- FOOTER -->
+                    <div class="mt-auto">
+
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+
+                            <small class="text-muted">
+                                Request ID: @item.Id
+                            </small>
+
+                        </div>
+
+                        <!-- ACTION BUTTONS -->
+                        <div class="d-flex gap-2">
+
+                            <a asp-action="Edit"
+                               asp-route-id="@item.Id"
+                               class="btn btn-sm btn-outline-primary w-50">
+
+                                Edit
+
+                            </a>
+
+                            <a asp-action="Delete"
+                               asp-route-id="@item.Id"
+                               class="btn btn-sm btn-outline-danger w-50">
+
+                                Delete
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        }
+
+    </div>
+
+</div>

@@ -1,0 +1,111 @@
+﻿@model GLMS.Models.Client
+
+<h2>Create Client</h2>
+
+<form asp-action="Create" method="post">
+
+    <div asp-validation-summary="All"
+         class="text-danger mb-3">
+    </div>
+
+    <!-- FULL NAME -->
+    <div class="mb-3">
+        <label asp-for="Name" class="form-label">
+            Full Name
+        </label>
+
+        <input asp-for="Name"
+               class="form-control" />
+
+        <span asp-validation-for="Name"
+              class="text-danger">
+        </span>
+    </div>
+
+    <!-- ID NUMBER -->
+    <div class="mb-3">
+        <label asp-for="IdNumber"
+               class="form-label">
+            ID Number
+        </label>
+
+        <input asp-for="IdNumber"
+               class="form-control" />
+
+        <span asp-validation-for="IdNumber"
+              class="text-danger">
+        </span>
+    </div>
+
+    <!-- EMAIL -->
+    <div class="mb-3">
+        <label asp-for="ContactDetails"
+               class="form-label">
+            Email Address
+        </label>
+
+        <input asp-for="ContactDetails"
+               class="form-control" />
+
+        <span asp-validation-for="ContactDetails"
+              class="text-danger">
+        </span>
+    </div>
+
+    <!-- PHONE -->
+    <div class="mb-3">
+        <label asp-for="PhoneNumber"
+               class="form-label">
+            Phone Number
+        </label>
+
+        <input asp-for="PhoneNumber"
+               class="form-control" />
+
+        <span asp-validation-for="PhoneNumber"
+              class="text-danger">
+        </span>
+    </div>
+
+    <!-- BUSINESS NAME -->
+    <div class="mb-3">
+        <label asp-for="BusinessName"
+               class="form-label">
+            Business Name (Optional)
+        </label>
+
+        <input asp-for="BusinessName"
+               class="form-control" />
+
+        <span asp-validation-for="BusinessName"
+              class="text-danger">
+        </span>
+    </div>
+
+    <!-- REGION -->
+    <div class="mb-3">
+        <label asp-for="Region"
+               class="form-label">
+            Region
+        </label>
+
+        <input asp-for="Region"
+               class="form-control" />
+
+        <span asp-validation-for="Region"
+              class="text-danger">
+        </span>
+    </div>
+
+    <button type="submit"
+            class="btn btn-success">
+        Save Client
+    </button>
+
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -1,0 +1,212 @@
+﻿@{
+    ViewData["Title"] = "GLMS";
+}
+
+<div class="container-fluid hero-section">
+
+    <div class="container">
+
+        <div class="row align-items-center min-vh-100">
+
+            <!-- LEFT -->
+            <div class="col-lg-6">
+
+                <span class="badge bg-success-subtle text-success mb-3 px-3 py-2">
+                    Enterprise Logistics Platform
+                </span>
+
+                <h1 class="display-4 fw-bold mb-4">
+
+                    Global Logistics
+                    Management System
+
+                </h1>
+
+                <p class="lead text-muted mb-4">
+
+                    Streamline freight contracts,
+                    service requests, client management,
+                    and international logistics operations
+                    through one secure enterprise platform.
+
+                </p>
+
+                <div class="d-flex gap-3">
+
+                    <a asp-controller="Dashboard"
+                       asp-action="Index"
+                       class="btn btn-success btn-lg px-4">
+
+                        Open Dashboard
+
+                    </a>
+
+                    <a asp-controller="Contract"
+                       asp-action="Index"
+                       class="btn btn-outline-success btn-lg px-4">
+
+                        View Contracts
+
+                    </a>
+
+                </div>
+
+            </div>
+
+            <!-- RIGHT -->
+            <div class="col-lg-6">
+
+                <div class="row g-4">
+
+                    <div class="col-md-6">
+
+                        <div class="card feature-card h-100">
+
+                            <div class="card-body">
+
+                                <div class="icon-circle mb-3">
+                                    📄
+                                </div>
+
+                                <h5 class="fw-bold">
+                                    Contract Management
+                                </h5>
+
+                                <p class="text-muted">
+
+                                    Manage client agreements,
+                                    SLAs, and contract workflows.
+
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-6">
+
+                        <div class="card feature-card h-100">
+
+                            <div class="card-body">
+
+                                <div class="icon-circle mb-3">
+                                    🚚
+                                </div>
+
+                                <h5 class="fw-bold">
+                                    Service Requests
+                                </h5>
+
+                                <p class="text-muted">
+
+                                    Track logistics operations
+                                    linked to active contracts.
+
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-6">
+
+                        <div class="card feature-card h-100">
+
+                            <div class="card-body">
+
+                                <div class="icon-circle mb-3">
+                                    💱
+                                </div>
+
+                                <h5 class="fw-bold">
+                                    Currency Conversion
+                                </h5>
+
+                                <p class="text-muted">
+
+                                    Real-time USD to ZAR
+                                    exchange integration.
+
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-6">
+
+                        <div class="card feature-card h-100">
+
+                            <div class="card-body">
+
+                                <div class="icon-circle mb-3">
+                                    📊
+                                </div>
+
+                                <h5 class="fw-bold">
+                                    Analytics Dashboard
+                                </h5>
+
+                                <p class="text-muted">
+
+                                    Monitor revenue,
+                                    contracts, and requests.
+
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<style>
+
+    body {
+        background-color: #f6fbf8;
+    }
+
+    .hero-section {
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+
+    .feature-card {
+        border: none;
+        border-radius: 18px;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        transition: 0.3s ease;
+    }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+    .icon-circle {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background-color: #e8f5ee;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 28px;
+    }
+
+</style>

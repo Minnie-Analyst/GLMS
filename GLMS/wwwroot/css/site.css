@@ -1,0 +1,125 @@
+/* =========================
+   GLMS CLEAN ENTERPRISE UI
+   ========================= */
+
+body.app-bg {
+    background-color: #f4fbf6;
+    font-family: "Segoe UI", sans-serif;
+    color: #1f2d1f;
+}
+
+/* NAVBAR */
+.navbar {
+    background-color: #1f3d2b !important;
+}
+
+.navbar-brand {
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.nav-link {
+    color: #e9f5ee !important;
+    transition: 0.2s;
+}
+
+    .nav-link:hover {
+        color: #a8e6b1 !important;
+    }
+
+/* PAGE HEADERS */
+h1, h2, h3, h4, h5 {
+    color: #1f3d2b;
+}
+
+/* CARDS (GLOBAL STYLE) */
+.card {
+    border-radius: 16px;
+    border: none;
+    background: #ffffff;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+    transition: 0.25s ease;
+}
+
+    .card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    }
+
+/* BUTTONS */
+.btn-primary, .btn-success {
+    background-color: #198754 !important;
+    border: none !important;
+}
+
+    .btn-primary:hover, .btn-success:hover {
+        background-color: #157347 !important;
+    }
+
+/* OUTLINE BUTTONS */
+.btn-outline-primary {
+    border-color: #198754;
+    color: #198754;
+}
+
+    .btn-outline-primary:hover {
+        background-color: #198754;
+        color: white;
+    }
+
+/* TABLES */
+.table {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+    .table thead {
+        background-color: #1f3d2b !important;
+        color: white;
+    }
+
+/* BADGES */
+.badge {
+    border-radius: 8px;
+    padding: 6px 10px;
+}
+
+/* FORM CONTROLS */
+.form-control, .form-select {
+    border-radius: 10px;
+    border: 1px solid #dbe8df;
+}
+
+    .form-control:focus, .form-select:focus {
+        border-color: #198754;
+        box-shadow: 0 0 0 0.2rem rgba(25,135,84,0.15);
+    }
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 80px;
+    background-color: #f4fbf6;
+}
+
+.footer {
+    width: 100%;
+    white-space: nowrap;
+    line-height: 60px;
+    background-color: white;
+}
+.icon-circle {
+    width: 45px;
+    height: 45px;
+    background-color: #e6f4ea;
+    color: #198754;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 18px;
+}
