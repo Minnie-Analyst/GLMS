@@ -7,31 +7,52 @@ using Microsoft.EntityFrameworkCore;
 
 public class ContractController : Controller
 {
+    private readonly ContractApiService _contractApiService;
     private readonly ContractService _contractService;
     private readonly FileService _fileService;
     private readonly AppDbContext _context;
 
     public ContractController(
-        AppDbContext context,
-        FileService fileService,
-        ContractService contractService)
+     AppDbContext context,
+     FileService fileService,
+     ContractService contractService,
+     ContractApiService contractApiService)
     {
         _context = context;
         _fileService = fileService;
         _contractService = contractService;
+        _contractApiService = contractApiService;
     }
 
     // GET: CONTRACTS
     public async Task<IActionResult> Index(
-        DateTime? startDate,
-        DateTime? endDate,
-        string? status)
+     DateTime? startDate,
+     DateTime? endDate,
+     string? status)
     {
-        var contracts = await _contractService
-            .FilterContractsAsync(
-                startDate,
-                endDate,
-                status);
+        var contracts =
+            await _contractApiService.GetContractsAsync();
+
+        if (startDate.HasValue)
+        {
+            contracts = contracts
+                .Where(c => c.StartDate >= startDate.Value)
+                .ToList();
+        }
+
+        if (endDate.HasValue)
+        {
+            contracts = contracts
+                .Where(c => c.EndDate <= endDate.Value)
+                .ToList();
+        }
+
+        if (!string.IsNullOrEmpty(status))
+        {
+            contracts = contracts
+                .Where(c => c.Status == status)
+                .ToList();
+        }
 
         return View(contracts);
     }

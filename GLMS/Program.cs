@@ -1,7 +1,8 @@
 using GLMS.Data;
 using GLMS.Services;
 using Microsoft.EntityFrameworkCore;
-using GLMS.Services; // (you’ll add this later for CurrencyService)
+using GLMS.Services;
+
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddScoped<FileService>();
@@ -16,6 +17,12 @@ builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddHttpClient<CurrencyService>();
+
+builder.Services.AddHttpClient<ContractApiService>(client =>
+{
+    client.BaseAddress =
+        new Uri("https://localhost:7168/");
+});
 
 var app = builder.Build();
 
